@@ -1,0 +1,16 @@
+{
+	"id": "projet_id",
+	"type": "SharedSlice",
+	"name": "ProjetId",
+	"description": "ProjetId",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": ""
+		}
+	]
+}
