@@ -17,3 +17,13 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+.mb-small {
+    margin-bottom: $space-s;
+}
+.mb-medium {
+    margin-bottom: $space-m;
+}
+.mb-large {
+    margin-bottom: $space-l;
+}

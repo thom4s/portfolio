@@ -12,15 +12,24 @@
         <header class="fl-column fl-between">
 
             <div class="upper">
-                <h1 class="h1">
-                    thomas florentin <br>
-                    <RichText blocks={settings.data.tagline} />
-                </h1>
-                <nav>
+
+                <div class="mb-medium">
+                    <h1 class="h1">
+                        thomas florentin <br>
+                        <RichText blocks={settings.data.tagline} />
+                    </h1>
+                </div>
+
+                <div class="mb-medium">
+                    <h2 class="h2">actualités</h2>
+                    <RichText blocks={settings.data.news} />
+                </div>
+
+                <nav class="mb-medium">
                     <h2 class="h2">contacts</h2>
                     <ul class="contacts_list flex">
                         <li><a href="mailto:hello@thomasflorentin.net">mail</a></li>
-                        <li><a href="/projets">linkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/in/thomas-florentin-15321870/" target="_blank">linkedIn</a></li>
                     </ul>
                 </nav>
             </div>
@@ -30,7 +39,7 @@
                     <h2 class="h2">projets</h2>
                     <ul class="projects_list fl-column">
                         {#each projects as project}
-                            <li><a href="/projets{project.url}">{project.data.client}</a></li>
+                            <li><a href="{project.url}">{project.data.client}</a></li>
                         {/each}
                     </ul>
                 </nav>
@@ -67,6 +76,9 @@
         color: white;
         width: 70%;
         flex: 0 0 70%;
+        max-height: calc( 100vh - 20px);
+        overflow-y: scroll;
+        padding: $space-s $space-xxl
     }
 
     .contacts_list {

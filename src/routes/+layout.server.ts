@@ -1,4 +1,3 @@
-export const prerender = 'auto';
 
 import { createClient } from '$lib/prismicio';
 

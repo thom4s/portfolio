@@ -6,7 +6,7 @@
 
 <ul>
     {#each data.projects as project}
-        <li><a href="/projets{project.url}">{project.data.client}</a></li>
+        <li><a href="{project.url}">{project.data.client}</a></li>
     {/each}
 </ul>
 
