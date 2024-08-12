@@ -10,6 +10,9 @@
     @extend .flex;
     flex-direction: column;
 }
+.fl-vcenter {
+    align-items: center;
+}
 
 ul {
     list-style: none;
@@ -18,6 +21,9 @@ ul {
     padding: 0;
 }
 
+.mb-0 {
+    margin-bottom: 0;
+}
 .mb-small {
     margin-bottom: $space-s;
 }
@@ -25,5 +31,5 @@ ul {
     margin-bottom: $space-m;
 }
 .mb-large {
-    margin-bottom: $space-l;
+    margin-bottom: $space-xxl;
 }

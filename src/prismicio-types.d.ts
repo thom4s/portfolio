@@ -4,6 +4,48 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Friends documents
+ */
+interface FriendsDocumentData {
+	/**
+	 * Name field in *Friends*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: friends.name
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+
+	/**
+	 * Website field in *Friends*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: friends.website
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	website: prismic.LinkField;
+}
+
+/**
+ * Friends document from Prismic
+ *
+ * - **API ID**: `friends`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FriendsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<FriendsDocumentData>,
+	'friends',
+	Lang
+>;
+
 type ProjetDocumentDataSlicesSlice = never;
 
 /**
@@ -86,6 +128,17 @@ interface ProjetDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	skills: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Projet*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.link
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 
 	/**
 	 * Slice Zone field in *Projet*
@@ -187,7 +240,7 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = ProjetDocument | SettingsDocument;
+export type AllDocumentTypes = FriendsDocument | ProjetDocument | SettingsDocument;
 
 /**
  * Primary content in *ProjetId → Default → Primary*
@@ -261,6 +314,8 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			FriendsDocument,
+			FriendsDocumentData,
 			ProjetDocument,
 			ProjetDocumentData,
 			ProjetDocumentDataSlicesSlice,

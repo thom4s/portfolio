@@ -18,6 +18,7 @@ body {
 }
 h1, h2, h3, h4, h5 {
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .h1 {
@@ -37,13 +38,16 @@ h1, h2, h3, h4, h5 {
     letter-spacing: .2em;
 }
 
+p {
+    margin-top: 0;
+}
 
 .body, 
 .body > p, 
 p {
-	font-size: 1.6rem;
+	font-size: 2rem;
 	font-weight: $font-l;
-	line-height: 1.5;
+	line-height: 1.6;
     text-transform: none;
     margin-bottom: $space-m;
 
@@ -75,4 +79,14 @@ p {
 a {
     color: inherit;
     text-decoration: none;    
+    transition: all .4s;
+    
+    &:hover {
+        font-style: italic;
+        cursor: pointer;
+    }
+}
+.metadatas {
+    font-size: 1.4rem;
+    font-weight: 300;
 }
