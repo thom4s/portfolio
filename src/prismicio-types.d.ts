@@ -4,12 +4,89 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ProjetDocumentDataSlicesSlice = ProjetIdSlice;
+type ProjetDocumentDataSlicesSlice = never;
 
 /**
  * Content for Projet documents
  */
 interface ProjetDocumentData {
+	/**
+	 * Client field in *Projet*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.client
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	client: prismic.KeyTextField;
+
+	/**
+	 * Details field in *Projet*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.details
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	details: prismic.RichTextField;
+
+	/**
+	 * Cover Full field in *Projet*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.cover_full
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	cover_full: prismic.ImageField<'mobile'>;
+
+	/**
+	 * Cover Square field in *Projet*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.cover_square
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	cover_square: prismic.ImageField<'mobile'>;
+
+	/**
+	 * Date field in *Projet*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	date: prismic.KeyTextField;
+
+	/**
+	 * Mission field in *Projet*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.mission
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	mission: prismic.KeyTextField;
+
+	/**
+	 * Skills field in *Projet*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet.skills
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	skills: prismic.KeyTextField;
+
 	/**
 	 * Slice Zone field in *Projet*
 	 *
@@ -68,7 +145,84 @@ export type ProjetDocument<Lang extends string = string> = prismic.PrismicDocume
 	Lang
 >;
 
-export type AllDocumentTypes = ProjetDocument;
+/**
+ * Content for Settings documents
+ */
+interface SettingsDocumentData {
+	/**
+	 * Actualités field in *Settings*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.news
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	news: prismic.RichTextField;
+
+	/**
+	 * Présentation field in *Settings*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.tagline
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	tagline: prismic.RichTextField;
+}
+
+/**
+ * Settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<SettingsDocumentData>,
+	'settings',
+	Lang
+>;
+
+export type AllDocumentTypes = ProjetDocument | SettingsDocument;
+
+/**
+ * Primary content in *ProjetId → Default → Primary*
+ */
+export interface ProjetIdSliceDefaultPrimary {
+	/**
+	 * Name field in *ProjetId → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet_id.default.primary.name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+
+	/**
+	 * Client field in *ProjetId → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet_id.default.primary.client
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	client: prismic.KeyTextField;
+
+	/**
+	 * Link field in *ProjetId → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projet_id.default.primary.link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
 
 /**
  * Default variation for ProjetId Slice
@@ -79,7 +233,7 @@ export type AllDocumentTypes = ProjetDocument;
  */
 export type ProjetIdSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ProjetIdSliceDefaultPrimary>,
 	never
 >;
 
@@ -110,8 +264,11 @@ declare module '@prismicio/client' {
 			ProjetDocument,
 			ProjetDocumentData,
 			ProjetDocumentDataSlicesSlice,
+			SettingsDocument,
+			SettingsDocumentData,
 			AllDocumentTypes,
 			ProjetIdSlice,
+			ProjetIdSliceDefaultPrimary,
 			ProjetIdSliceVariation,
 			ProjetIdSliceDefault
 		};

@@ -4,5 +4,14 @@
 </script>
 
 
-<h1>{data.title}</h1>
+<ul>
+    {#each data.projects as project}
+        <li><a href="/projets{project.url}">{project.data.client}</a></li>
+    {/each}
+</ul>
 
+
+
+<style>
+    
+</style>

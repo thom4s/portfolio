@@ -2,7 +2,25 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "system",
+				"type": "Text"
+			},
+			"client": {
+				"__TYPE__": "FieldContent",
+				"value": "girl",
+				"type": "Text"
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			}
+		},
 		"items": []
 	}
 ]

@@ -12,15 +12,78 @@
 				},
 				"type": "UID"
 			},
+			"client": {
+				"type": "Text",
+				"config": {
+					"label": "Client",
+					"placeholder": ""
+				}
+			},
+			"details": {
+				"type": "StructuredText",
+				"config": {
+					"label": "Details",
+					"placeholder": "",
+					"allowTargetBlank": true,
+					"multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+				}
+			},
+			"cover_full": {
+				"type": "Image",
+				"config": {
+					"label": "Cover Full",
+					"constraint": {
+						"width": null
+					},
+					"thumbnails": [
+						{
+							"name": "mobile",
+							"width": 800,
+							"height": null
+						}
+					]
+				}
+			},
+			"cover_square": {
+				"type": "Image",
+				"config": {
+					"label": "Cover Square",
+					"constraint": {},
+					"thumbnails": [
+						{
+							"name": "mobile",
+							"width": 800,
+							"height": null
+						}
+					]
+				}
+			},
+			"date": {
+				"type": "Text",
+				"config": {
+					"label": "Date",
+					"placeholder": ""
+				}
+			},
+			"mission": {
+				"type": "Text",
+				"config": {
+					"label": "Mission",
+					"placeholder": ""
+				}
+			},
+			"skills": {
+				"type": "Text",
+				"config": {
+					"label": "Skills",
+					"placeholder": ""
+				}
+			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",
 				"config": {
-					"choices": {
-						"projet_id": {
-							"type": "SharedSlice"
-						}
-					}
+					"choices": {}
 				}
 			}
 		},

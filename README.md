@@ -2,15 +2,30 @@
 
 thomasflorentin.net
 
-## Developing
+## tech
+
+CMS : Prismic https://prismic.io/docs/
+Front : Sveltekit
+
+Start Front 
 
 ```bash
 npm install
-npm run dev
-
-# or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+http://localhost:5173/
+
+
+Start Back (slicemachine de Prismic)
+```bash
+npm run slicemachine
+```
+http://localhost:9999
+
+La construction du modèle de données se fait en local. Il est ensuite pushé via l'interface locale.
+
+Le CMS est ici https://thomasflorentin.prismic.io
+
 
 ## Building
 

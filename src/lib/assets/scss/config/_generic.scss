@@ -1,0 +1,19 @@
+
+.flex {
+    display: flex;
+}
+.fl-between {
+   @extend .flex;
+   justify-content: space-between;
+}
+.fl-column {
+    @extend .flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
