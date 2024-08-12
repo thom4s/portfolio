@@ -15,7 +15,7 @@
             <div class="upper"  class:faded={ pathname.includes('projets') }>
 
                 <div class="mb-large">
-                    <a href="/"><h1 class="h1">
+                    <a href="/" class="no-style"><h1 class="h1">
                         <span class="h2">thomas florentin</span> <br>
                         <RichText blocks={settings.data.tagline} />
                         <span>samois sur seine / paris</span>
@@ -27,7 +27,7 @@
                     <RichText blocks={settings.data.news} />
                 </div>
 
-                <nav class="mb-medium">
+                <nav class="mb-0">
                     <h2 class="h2 mb-small">contacts</h2>
                     <ul class="contacts_list flex">
                         <li><a href="mailto:hello@thomasflorentin.net">mail</a></li>
@@ -54,7 +54,7 @@
                     <h2 class="h2 mb-small">friends</h2>
                     <ul class="projects_list fl-column">
                         {#each friends as friend}
-                            <li><a href="{friend.data.website?.url}">{friend.data.name}</a></li>
+                            <li><a href="{friend.data.website?.url}" target="_blank">{friend.data.name}</a></li>
                         {/each}
                     </ul>
                 </nav>
@@ -73,18 +73,37 @@
                 </div>
             {/key}
         </main>
+
+
+        <footer>
+            
+        </footer>
     </div>
 
 <style lang="scss">
     .screen {
         height: 100%;
+        @include max(tablet) {
+           flex-direction: column;
+        }
     }
 
     header {
         width: 30%;
         flex: 0 0 30%;
-        border-right: 1px solid $gray-light;
-        height: 100%;
+
+        @include min(tablet) {
+            height: 100%;
+            border-right: 1px solid $gray-light;
+        }
+        @include max(bigtablet) {
+            width: 50%;
+            flex: 0 0 50%;
+        }
+        @include max(tablet) {
+            width: 100%;
+            flex: 0 0 100%;
+        }
     }
 
         .upper {
@@ -92,9 +111,11 @@
             background-color: black;
             padding: $space-m;
             color: white;
-            border-bottom: 1px solid $gray-light;
             overflow-y: scroll;
 
+            @include min(tablet) {
+                border-bottom: 1px solid $gray-light;
+            }
             & > * {
                 transition: opacity .8s;
             }
@@ -108,7 +129,6 @@
             font-size: 1.8rem;
         }
 
-
         .faded > * {
             opacity: .6;
         }
@@ -118,14 +138,24 @@
         color: white;
         width: 70%;
         flex: 0 0 70%;
-        max-height: calc( 100vh - 20px);
-        overflow-y: scroll;
         padding: $space-m $space-m;
 
+        @include min(tablet) {
+            max-height: calc( 100vh - 20px);
+            overflow-y: scroll;
+        }
+        @include max(bigtablet) {
+            width: 50%;
+            flex: 0 0 50%;
+        }
+        @include max(tablet) {
+            width: 100%;
+            flex: 0 0 100%;
+        }
     }
-    :global(main img) {
-        align-self: flex-end;
-    }
+        .template-outer {
+            height: 100%;
+        }
 
     .contacts_list {
         font-size: 1.6rem;

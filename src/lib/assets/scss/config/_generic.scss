@@ -16,13 +16,16 @@
 
 ul {
     list-style: none;
-    gap: 10px;
+    gap: $space-s;
     margin: 0;
     padding: 0;
 }
 
 .mb-0 {
     margin-bottom: 0;
+}
+.mb-xsmall {
+    margin-bottom: $space-xs;
 }
 .mb-small {
     margin-bottom: $space-s;

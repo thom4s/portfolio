@@ -38,9 +38,10 @@
         {/if}
     {/each}
 {/if}
-<style>
-
-
+<style lang="scss">
+    p {
+        margin-bottom: $space-xxs;
+    }
     h1, h2, h3 {
         color: inherit;
     }

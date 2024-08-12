@@ -20,11 +20,13 @@
 
         <div class="fl-between fl-vcenter mb-medium">
             <h1>{data.client}</h1>
-            <a href="{data.link.url}" target={data.link.target} class="">Voir le projet</a>
+            {#if data.link.url }
+                <a href="{data.link.url}" target="_blank" class="">Voir le projet</a>
+            {/if}
         </div>
 
         <div class="">
-            <p class="mb-0">{data.date}</p>
+            <p class="mb-xsmall">{data.date}</p>
             <RichText blocks={data.details} />
         </div>
 
@@ -43,15 +45,14 @@
         min-height: 100%;
     }
     .project_details {
-        p {
-            margin: 0;
-        }
         a {
             display: inline-block;
         }
     }
     .project_cover {
         align-self: flex-end;
-        width: 60%;
+        @include min(bigtablet) {
+            width: 60%;
+        }
     }
 </style>

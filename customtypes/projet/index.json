@@ -65,13 +65,6 @@
 					"placeholder": ""
 				}
 			},
-			"mission": {
-				"type": "Text",
-				"config": {
-					"label": "Mission",
-					"placeholder": ""
-				}
-			},
 			"skills": {
 				"type": "Text",
 				"config": {

@@ -108,17 +108,6 @@ interface ProjetDocumentData {
 	date: prismic.KeyTextField;
 
 	/**
-	 * Mission field in *Projet*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: projet.mission
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	mission: prismic.KeyTextField;
-
-	/**
 	 * Skills field in *Projet*
 	 *
 	 * - **Field Type**: Text
@@ -223,6 +212,17 @@ interface SettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	tagline: prismic.RichTextField;
+
+	/**
+	 * Home Cover field in *Settings*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.home_cover
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	home_cover: prismic.ImageField<never>;
 }
 
 /**
