@@ -89,8 +89,8 @@
     }
 
     header {
-        width: 30%;
-        flex: 0 0 30%;
+        width: 35%;
+        flex: 0 0 35%;
 
         @include min(tablet) {
             height: 100%;
@@ -122,7 +122,7 @@
         }
         .lower {
             flex: 1 1 auto;
-            background-color: black;
+            background-color: $gray-darker;
             padding: $space-m;
             color: white;
             overflow-y: scroll;
@@ -136,8 +136,8 @@
     main {
         background-color: black;
         color: white;
-        width: 70%;
-        flex: 0 0 70%;
+        width: 65%;
+        flex: 0 0 65%;
         padding: $space-m $space-m;
 
         @include min(tablet) {
