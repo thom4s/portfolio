@@ -191,6 +191,7 @@
             overflow-y: scroll;
 
             @include min(tablet) {
+                padding: $space-m;
 
                 & > .line {
                     bottom: 0;
@@ -202,24 +203,27 @@
                 }
                 
             }
+            @include max(tablet) {
+                padding: $space-s;
+            }
+
             & > * {
                 transition: opacity .8s;
             }
         }
-
-        .site-title {
-            :global(p) {
-                margin-bottom: 0;
-                line-height: 1.2;
+            .site-title {
+                :global(p) {
+                    margin-bottom: 0;
+                    line-height: 1.2;
+                }
+                .name {
+                    font-weight: 700;
+                    letter-spacing: normal;
+                }
+                .place {
+                    color: $gray-light;
+                }
             }
-            .name {
-                font-weight: 700;
-                letter-spacing: normal;
-            }
-            .place {
-                color: $gray-light;
-            }
-        }
 
         .lower {
             position: relative;
@@ -234,11 +238,13 @@
             transition: max-height .7s;
 
             @include max(tablet) {
-                padding-top: 0;
                 border-bottom: 1px solid $gray-light;
                 overflow: hidden;
+                padding: 0 $space-s $space-xs $space-s;
             }
-
+            @include min(tablet) {
+                padding: $space-m;
+            }
             .openTabTrigger {
                 @include min(tablet) {
                     display: none;
@@ -246,7 +252,7 @@
                 @include max(tablet) {
                     position: absolute;
                     top: 0;
-                    right: 35px;
+                    right: 10px;
                     border: none;
                     background: none;
                     color: $gray-light;
@@ -303,7 +309,7 @@
         @include max(tablet) {
             width: 100%;
             flex: 0 0 100%;
-            padding: $space-xs $space-m;
+            padding: $space-xs $space-s;
         }
     }
         .template-outer {
