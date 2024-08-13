@@ -22,8 +22,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .h1 {
-    font-size: 2rem;
-    font-weight: 300;
+    font-size: 7rem;
+    font-weight: 600;
+    line-height: 1;
     p {
         font-size: inherit;
         font-weight: inherit;
@@ -32,6 +33,16 @@ h1, h2, h3, h4, h5 {
 }
 
 .h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    p {
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+    }
+}
+
+.h3 {
     font-size: 1.6rem;
     font-style: italic;
     font-weight: 100;

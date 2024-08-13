@@ -19,7 +19,7 @@
         </div>
 
         <div class="fl-between fl-vcenter mb-medium">
-            <h1>{data.client}</h1>
+            <h1 class="h1">{data.client}</h1>
             {#if data.link.url }
                 <a href="{data.link.url}" target="_blank" class="">Voir le projet</a>
             {/if}
