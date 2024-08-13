@@ -22,6 +22,10 @@
                     {block.text}
                 {/if}
             </p>
+
+        {:else if block.type === "list-item" }
+            <li>{block.text}</li>
+
         {:else if block.type === "heading" }
             {#each block.children as child}
                 {#if child.type === "text" }
@@ -51,5 +55,9 @@
     }
     .bold {
         font-weight: 900;
+    }
+    li {
+        padding-left: $space-xs;
+        margin-left: $space-s;
     }
 </style>

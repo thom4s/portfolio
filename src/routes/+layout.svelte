@@ -37,11 +37,11 @@
             <div id="upper" class="upper" class:faded={ pathname.includes('projets') }>
                 <div class="line"></div>
 
-                <div class="mb-medium site-title">
+                <div class="mb-large site-title">
                     <a href="/" class="no-style"><h1 class="h2">
                         <p class="h3 name">thomas florentin</p>
                         <RichText blocks={settings.data.tagline} />
-                        <p class="">samois sur seine / paris</p>
+                        <p class="place">samois sur seine / paris</p>
                     </h1></a>
                 </div>
 
@@ -50,7 +50,7 @@
                     <RichText blocks={settings.data.news} />
                 </div>
 
-                <nav class="mb-0">
+                <nav class="mb-small">
                     <h2 class="h3 mb-xsmall">contacts</h2>
                     <ul class="contacts_list flex">
                         <li><a href="mailto:hello@thomasflorentin.net">mail</a></li>
@@ -180,6 +180,9 @@
             .name {
                 font-weight: 700;
                 letter-spacing: normal;
+            }
+            .place {
+                color: $gray-light;
             }
         }
 
