@@ -6,7 +6,6 @@
 	export let data;
 
     $: ({data} = data.page)
-    $: console.log(data)
 
 </script>
 
@@ -21,7 +20,7 @@
         <div class="fl-between fl-vcenter mb-medium">
             <h1 class="h1">{data.client}</h1>
             {#if data.link.url }
-                <a href="{data.link.url}" target="_blank" class="">Voir le projet</a>
+                <a href="{data.link.url}" target="_blank" class="txt-right">Voir le projet</a>
             {/if}
         </div>
 

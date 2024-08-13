@@ -1,6 +1,7 @@
 
 .flex {
     display: flex;
+    gap: $space-s;
 }
 .fl-between {
    @extend .flex;
@@ -35,4 +36,8 @@ ul {
 }
 .mb-large {
     margin-bottom: $space-xxl;
+}
+
+.txt-right {
+    text-align: right;
 }

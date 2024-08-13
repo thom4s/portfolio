@@ -2,29 +2,30 @@
     import '$lib/assets/scss/style.scss';
     import RichText from '$lib/Components/RichText.svelte';
     import { fade } from 'svelte/transition';
-    import { gsap } from "gsap";
     import { onMount } from 'svelte';
+    import {device} from '$lib/stores/device.js';
+
+    let mainElement, lowerElement, lowerElementClose = false;
 
     export let data;
     $: ({projects, settings, pathname, friends } = data)
-    $: console.log(data)
-
 
     onMount( () => {
-        //WITH Timelines (cleaner, more versatile)
-        // var tl = gsap.timeline({repeat: 2, repeatDelay: 1});
-        // tl.to("#upper", {opacity: 1, duration: 1});
-        // tl.to("#lower", {opacity: 1, duration: 1});
-        // tl.to("#main", {opacity: 1, duration: 1});
 
-        // then we can control the whole thing easily...
-        //tl.play();
+        if( $device === 'mobile' || $device === 'tablet' ) {
 
-        //scroll to 250 pixels down from the top of the content in the div
-        //gsap.to("#lower", { duration: 2, scrollTo: 250 });
+            let lowerHeight = lowerElement.clientHeight;
+            lowerElement.style.maxHeight = lowerHeight + 'px';
+
+            setTimeout( () => {
+                lowerElementClose = true;
+            }, 500);
+
+        }
 
     })
 
+    $: console.log('lowerElementClose: ', lowerElementClose)
 
 </script>
 
@@ -62,13 +63,38 @@
                 </nav>
             </div>
 
-            <div id="lower" class="lower">
+            <div id="lower" class="lower" class:closed={lowerElementClose} bind:this={ lowerElement }>
+
+                <button class="openTabTrigger" on:click={ () => {
+                    lowerElementClose = !lowerElementClose
+                }}>
+                    {#if lowerElementClose}
+                        Voir tout
+                    {:else}
+                        Voir moins
+                    {/if}
+                </button>
 
                 <nav class="mb-large">
                     <h2 class="h3 mb-small">projets</h2>
                     <ul class="projects_list fl-column">
                         {#each projects as project}
-                            <li><a href="{project.url}">{project.data.client}</a></li>
+                            <li>
+                                <a 
+                                    data-sveltekit-noscroll 
+                                    href="{project.url}" 
+                                    class="project_item"
+                                    title="Détails sur le projet {project.data.client}"
+                                    on:click={ () => {
+                                        if( $device === 'mobile' || $device === 'tablet' ) {
+                                            lowerElementClose = true;
+                                            lowerElement.scrollIntoView();
+                                        }
+                                    }}
+                                >
+                                    {project.data.client}
+                                </a>
+                            </li>
                         {/each}
                     </ul>
                 </nav>
@@ -77,7 +103,14 @@
                     <h2 class="h3 mb-small">friends</h2>
                     <ul class="projects_list fl-column">
                         {#each friends as friend}
-                            <li><a href="{friend.data.website?.url}" target="_blank">{friend.data.name}</a></li>
+                            <li>
+                                <a 
+                                    href="{friend.data.website?.url}" 
+                                    target="_blank"
+                                    class="friend_item">
+                                    {friend.data.name}
+                                </a>
+                            </li>
                         {/each}
                     </ul>
                 </nav>
@@ -86,7 +119,7 @@
         </header>
 
 
-        <main class="">
+        <main class="" bind:this={mainElement}>
             {#key data.pathname}
                 <div 
                     class="template-outer"
@@ -105,9 +138,11 @@
 
 <style lang="scss">
     .screen {
-        height: 100%;
         @include max(tablet) {
            flex-direction: column;
+        }
+        @include min(tablet) {
+            height: 100%;
         }
     }
 
@@ -187,6 +222,7 @@
         }
 
         .lower {
+            position: relative;
             flex: 1 1 auto;
             background-color: black;
             padding: $space-m;
@@ -195,10 +231,45 @@
             font-size: 1.8rem;
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
+            transition: max-height .7s;
+
+            @include max(tablet) {
+                padding-top: 0;
+                border-bottom: 1px solid $gray-light;
+                overflow: hidden;
+            }
+
+            .openTabTrigger {
+                @include min(tablet) {
+                    display: none;
+                }
+                @include max(tablet) {
+                    position: absolute;
+                    top: 0;
+                    right: 35px;
+                    border: none;
+                    background: none;
+                    color: $gray-light;
+                    cursor: pointer;
+                    font-family: inherit;
+                }
+            }
+            &.closed {
+                @include max(tablet) {
+                    max-height: 145px !important;
+                }
+            }
         }
 
         .faded > *:not(.line) {
             opacity: .6;
+        }
+
+        .project_item {
+            cursor: help;
+        }
+        .friend_item {
+            cursor: ne-resize;
         }
 
 
