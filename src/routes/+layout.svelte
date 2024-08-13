@@ -290,11 +290,11 @@
         color: white;
         width: 65%;
         flex: 0 0 65%;
-        padding: $space-m $space-m;
 
         @include min(tablet) {
             max-height: calc( 100vh - 10px);
             overflow-y: scroll;
+            padding: $space-m $space-m;
         }
         @include max(bigtablet) {
             width: 50%;
@@ -303,6 +303,7 @@
         @include max(tablet) {
             width: 100%;
             flex: 0 0 100%;
+            padding: $space-xs $space-m;
         }
     }
         .template-outer {
@@ -311,6 +312,8 @@
 
     .contacts_list {
         font-size: 1.6rem;
+        flex-wrap: wrap;
+        row-gap: 10px;
     }
 
 </style>

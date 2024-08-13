@@ -40,8 +40,14 @@
 <style lang="scss">
 
     .project {
-        gap: $space-xxl;
         min-height: 100%;
+
+        @include min( tablet) {
+            gap: $space-xxl;
+        }
+        @include max( tablet) {
+            gap: $space-m;
+        }
     }
     .project_details {
         a {
