@@ -44,7 +44,7 @@
 {/if}
 <style lang="scss">
     p {
-        margin-bottom: $space-xxs;
+        margin-bottom: $space-s;
     }
     h1, h2, h3 {
         color: inherit;
