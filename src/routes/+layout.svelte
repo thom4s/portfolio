@@ -268,7 +268,9 @@
         }
 
         .faded > *:not(.line) {
-            opacity: .6;
+            @include min(tablet) {
+                opacity: .6;
+            }
         }
 
         .project_item {
