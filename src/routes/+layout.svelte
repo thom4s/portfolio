@@ -3,13 +3,14 @@
     import RichText from '$lib/Components/RichText.svelte';
     import { fade } from 'svelte/transition';
     import { onMount } from 'svelte';
-    import {device} from '$lib/stores/device.js';
+    import { device } from '$lib/stores/device.js';
 
     let mainElement, lowerElement, lowerElementClose = false;
 
     export let data;
-    $: ({projects, settings, pathname, friends } = data)
+    $: ({projects, settings, pathname, friends, cgv, mentions } = data)
 
+    $: console.log('mentions', mentions)
     onMount( () => {
 
         if( $device === 'mobile' || $device === 'tablet' ) {
@@ -22,10 +23,7 @@
             }, 500);
 
         }
-
     })
-
-    $: console.log('lowerElementClose: ', lowerElementClose)
 
 </script>
 
@@ -99,7 +97,7 @@
                     </ul>
                 </nav>
 
-                <nav class="mb-medium">
+                <nav class="mb-large">
                     <h2 class="h3 mb-small">friends</h2>
                     <ul class="projects_list fl-column">
                         {#each friends as friend}
@@ -115,7 +113,26 @@
                     </ul>
                 </nav>
 
+                <footer>
+                    <p>thomasflorentin © 2024</p>
+                    <nav class="mb-medium">
+                        <ul class="flex footer_menu">
+                                <li>
+                                    <a href="{cgv.uid}" class="page_item">
+                                        {cgv.data.title}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{mentions.uid}" class="page_item">
+                                        {mentions.data.title}
+                                    </a>
+                                </li>
+                        </ul>
+                    </nav>
+                </footer>
+
             </div>
+
         </header>
 
 
@@ -131,9 +148,7 @@
         </main>
 
 
-        <footer>
-            
-        </footer>
+
     </div>
 
 <style lang="scss">
@@ -322,6 +337,16 @@
         font-size: 1.6rem;
         flex-wrap: wrap;
         row-gap: 10px;
+    }
+
+    footer {
+        p {
+            font-size: 1rem;
+        }
+    }
+    .footer_menu {
+        color: white;
+        font-size: 1rem;
     }
 
 </style>

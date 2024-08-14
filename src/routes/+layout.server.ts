@@ -10,13 +10,17 @@ export async function load({  url}) {
 	const { pathname } = url;
 
 	const settings = await client.getSingle('settings');
+	const cgv = await client.getByUID('page', 'cgv');
+	const mentions = await client.getByUID('page', 'mentions-legales');
 	const projects = await client.getAllByType('projet');
 	const friends = await client.getAllByType('friends');
-
+	
 	return {
 		pathname,
 		settings,
         projects,
-		friends
+		friends,
+		cgv,
+		mentions
 	};
 }

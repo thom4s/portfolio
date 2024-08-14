@@ -26,18 +26,11 @@
         {:else if block.type === "list-item" }
             <li>{block.text}</li>
 
-        {:else if block.type === "heading" }
-            {#each block.children as child}
-                {#if child.type === "text" }
-                    {#if block.level === 1}
-                        <h1>{@html child.text}</h1>
-                    {:else if block.level === 2}
-                        <h2>{@html child.text}</h2>
-                    {:else if block.level === 3}
-                        <h3>{@html child.text}</h3>
-                    {/if}
-                {/if}
-            {/each}
+        {:else if block.type === "heading2" }
+            <h2>{@html block.text}</h2>
+
+        {:else if block.type === "heading3" }
+            <h3>{@html block.text}</h3>
 
         {/if}
     {/each}
