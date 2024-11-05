@@ -10,7 +10,6 @@
     export let data;
     $: ({projects, settings, pathname, friends, cgv, mentions } = data)
 
-    $: console.log('mentions', mentions)
     onMount( () => {
 
         if( $device === 'mobile' || $device === 'tablet' ) {
